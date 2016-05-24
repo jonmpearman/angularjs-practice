@@ -1,8 +1,24 @@
-app.directive('goodbye', function() {
+app.directive('hello', function() {
 	return {
-		restrict: "A",
-		link: function() {
-			alert("See ya later!");
+		require: 'welcome',
+		link: function(scope, element, attrs, welcomeController) {
+			welcomeController.sayHello();
+		}
+	};
+})
+.directive('howdy', function() {
+	return {
+		require: 'welcome',
+		link: function(scope, element, attrs, welcomeController) {
+			welcomeController.sayHowdy();
+		}
+	};
+})
+.directive('hi', function() {
+	return {
+		require: 'welcome',
+		link: function(scope, element, attrs, welcomeController) {
+			welcomeController.sayHi();
 		}
 	};
 });

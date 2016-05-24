@@ -4,16 +4,34 @@
     <title>AngularJS Binding</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
     <script type="text/javascript" src="../scripts/app.js"></script>
-    <script type="text/javascript" src="../scripts/controller.js"></script>
+    <script type="text/javascript" src="../scripts/functionalities.js"></script>
+    <script type="text/javascript" src="../scripts/controllers/controller.js"></script>
+    <script type="text/javascript" src="../scripts/controllers/PostController.js"></script>
+    <script type="text/javascript" src="../scripts/controllers/ListController.js"></script>
+    <script type="text/javascript" src="../scripts/services/messages.js"></script>
+    <script type="text/javascript" src="../scripts/filters/Capitalize.js"></script>    
+    <script type="text/javascript" src="../scripts/directives/welcome.js"></script>
+    <script type="text/javascript" src="../scripts/directives/goodbye.js"></script>
+  </head>
   </head>
   <body>
-    <div ng-app>
+    <div ng-app="app">
       <h1 ng-bind="'Binding ' + message"></h1>
       <input type="text" ng-model="message" ng-init="message = 'hello'" />
       <p ng-bind="message"></p>
       <p ng-bind="message + message"></p>
       <p ng-bind="::message === 'hello'"></p>
       <p ng-bind="1 + 2"></p>
+      <div welcome goodbye></div>
+	  <div ng-controller="TestController as test">
+      	<input type="text" ng-model="search" />
+      	<p ng-repeat="person in test.people | filter: search">{{ person.name }}</p>
+      </div>
+      <div id="App2">
+    	<div entering="activeClass" leaving>Hover over me for fun times</div>
+	  </div>
+	  <welcome hello howdy hi>Say something!</welcome>
+	  <welcome entering="activeClass">This is another thing</welcome>
     </div>
   </body>
 </html>
